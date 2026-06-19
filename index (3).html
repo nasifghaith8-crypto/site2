@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عقار فيو - VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; overflow-x: hidden; }
+        .luxury-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%), radial-gradient(ellipse at 50% 0%, rgba(139, 90, 43, 0.1) 0%, transparent 50%); z-index: -1; animation: bgPulse 8s ease-in-out infinite; }
+        @keyframes bgPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .top-bar { background: rgba(0, 0, 0, 0.9); border-bottom: 2px solid #d4af37; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .logo-section { display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { width: 60px; height: 60px; background: #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #000; font-weight: 900; box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+        .logo-text h1 { font-size: 32px; font-weight: 900; color: #d4af37; text-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        .logo-text p { font-size: 14px; color: #888; letter-spacing: 3px; }
+        .vip-badge { background: #d4af37; color: #000; padding: 10px 30px; border-radius: 30px; font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); animation: vipGlow 2s ease-in-out infinite; }
+        @keyframes vipGlow { 0%, 100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); } 50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.7); } }
+        .search-section { padding: 60px 0 40px; text-align: center; }
+        .search-section h2 { font-size: 48px; font-weight: 900; margin-bottom: 15px; background: #d4af37; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .search-section p { font-size: 20px; color: #aaa; margin-bottom: 40px; }
+        .search-box { display: flex; gap: 15px; max-width: 800px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.3); backdrop-filter: blur(10px); }
+        .search-box input, .search-box select { flex: 1; padding: 15px 20px; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; background: rgba(0, 0, 0, 0.5); color: #fff; font-family: 'Cairo', sans-serif; font-size: 16px; outline: none; transition: all 0.3s; }
+        .search-box input:focus, .search-box select:focus { border-color: #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+        .search-box button { padding: 15px 40px; background: #d4af37; color: #000; border: none; border-radius: 12px; font-family: 'Cairo', sans-serif; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+        .search-box button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+        .properties-section { padding: 40px 0 80px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 42px; font-weight: 900; color: #d4af37; margin-bottom: 10px; }
+        .section-title p { font-size: 18px; color: #888; }
+        .properties-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+        .property-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 25px; overflow: hidden; transition: all 0.5s; position: relative; }
+        .property-card:hover { transform: translateY(-10px); border-color: #d4af37; box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2); }
+        .property-image { position: relative; height: 300px; overflow: hidden; }
+        .property-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .property-card:hover .property-image img { transform: scale(1.1); }
+        .property-number { position: absolute; top: 20px; right: 20px; background: #d4af37; color: #000; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); }
+        .property-badge { position: absolute; top: 20px; left: 20px; background: rgba(0, 0, 0, 0.8); color: #d4af37; padding: 8px 20px; border-radius: 20px; font-weight: 700; font-size: 14px; border: 1px solid #d4af37; }
+        .property-info { padding: 25px; }
+        .property-name { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+        .property-category { display: inline-block; background: rgba(212, 175, 55, 0.15); color: #d4af37; padding: 5px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 15px; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .property-location { display: flex; align-items: center; gap: 8px; color: #aaa; font-size: 16px; margin-bottom: 20px; }
+        .property-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; padding: 15px 0; border-top: 1px solid rgba(212, 175, 55, 0.2); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .detail-item { text-align: center; }
+        .detail-item span { display: block; font-size: 20px; font-weight: 900; color: #d4af37; }
+        .detail-item label { font-size: 12px; color: #888; }
+        .property-price { display: flex; align-items: center; justify-content: space-between; }
+        .price { font-size: 28px; font-weight: 900; color: #d4af37; }
+        .price span { font-size: 16px; color: #888; }
+        .view-btn { padding: 12px 30px; background: #d4af37; color: #000; border: none; border-radius: 10px; font-family: 'Cairo', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+        .view-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); }
+        .image-gallery { display: flex; gap: 5px; padding: 0 25px 20px; }
+        .image-gallery img { width: 80px; height: 60px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.7; transition: all 0.3s; border: 2px solid transparent; }
+        .image-gallery img:hover { opacity: 1; border-color: #d4af37; transform: scale(1.1); }
+        footer { background: rgba(0, 0, 0, 0.9); border-top: 2px solid #d4af37; padding: 40px 0; text-align: center; }
+        footer p { color: #888; font-size: 16px; }
+        footer span { color: #d4af37; font-weight: 700; }
+        .sparkle { position: fixed; width: 4px; height: 4px; background: #d4af37; border-radius: 50%; pointer-events: none; animation: sparkle 2s linear forwards; z-index: 9999; }
+        @keyframes sparkle { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0) translateY(-50px); } }
+        @keyframes countUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .properties-grid { grid-template-columns: 1fr; } .search-box { flex-direction: column; } .logo-text h1 { font-size: 24px; } .search-section h2 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+    <div class="luxury-bg"></div>
+    <div class="top-bar">
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon">🏠</div>
+                    <div class="logo-text"><h1>عقار فيو</h1><p>REAL ESTATE VIEW</p></div>
+                </div>
+                <div class="vip-badge">⭐ VIP</div>
+            </div>
+        </div>
+    </div>
+    <div class="search-section">
+        <div class="container">
+            <h2>اكتشف عقارك الفاخر</h2>
+            <p>أفضل العقارات الفاخرة في أرقى المناطق حول العالم</p>
+            <div class="search-box">
+                <input type="text" placeholder="ابحث عن اسم العقار...">
+                <select><option value="">كل الفئات</option><option value="villa">فيلا فاخرة</option><option value="apartment">شقة سكنية</option><option value="penthouse">بنتهاوس</option><option value="palace">قصر</option></select>
+                <select><option value="">كل الدول</option><option value="uae">الإمارات</option><option value="saudi">السعودية</option><option value="qatar">قطر</option><option value="kuwait">الكويت</option><option value="bahrain">البحرين</option><option value="egypt">مصر</option><option value="turkey">تركيا</option></select>
+                <button>🔍 بحث</button>
+            </div>
+        </div>
+    </div>
+    <div class="properties-section">
+        <div class="container">
+            <div class="section-title"><h2>عقارات VIP المميزة</h2><p>اختر من بين أفخم العقارات حول العالم</p></div>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80" alt="فيلا دبي">
+                        <div class="property-number">1</div><div class="property-badge">VIP فاخر</div>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-name">فيلا النخلة الذهبية</h3>
+                        <span class="property-category">فيلا فاخرة</span>
+                        <div class="property-location">📍 نخلة جميرا، دبي، الإمارات العربية المتحدة</div>
+                        <div class="property-details">
+                            <div class="detail-item"><span>8</span><label>غرف نوم</label></div>
+                            <div class="detail-item"><span>12</span><label>حمامات</label></div>
+                            <div class="detail-item"><span>1200</span><label>م²</label></div>
+                        </div>
+                        <div class="property-price"><div class="price">45,000,000 <span>درهم</span></div><button class="view-btn">تفاصيل</button></div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&q=80" alt="صورة 1">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&q=80" alt="صورة 2">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&q=80" alt="صورة 3">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=200&q=80" alt="صورة 4">
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="بنتهاوس الرياض">
+                        <div class="property-number">2</div><div class="property-badge">VIP فاخر</div>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-name">بنتهاوس الملكية</h3>
+                        <span class="property-category">بنتهاوس</span>
+                        <div class="property-location">📍 حي النرجس، الرياض، المملكة العربية السعودية</div>
+                        <div class="property-details">
+                            <div class="detail-item"><span>5</span><label>غرف نوم</label></div>
+                            <div class="detail-item"><span>7</span><label>حمامات</label></div>
+                            <div class="detail-item"><span>800</span><label>م²</label></div>
+                        </div>
+                        <div class="property-price"><div class="price">28,000,000 <span>ريال</span></div><button class="view-btn">تفاصيل</button></div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=200&q=80" alt="صورة 1">
+                        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=200&q=80" alt="صورة 2">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=200&q=80" alt="صورة 3">
+                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=200&q=80" alt="صورة 4">
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&q=80" alt="قطر">
+                        <div class="property-number">3</div><div class="property-badge">VIP فاخر</div>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-name">قصر اللؤلؤة</h3>
+                        <span class="property-category">قصر</span>
+                        <div class="property-location">📍 اللؤلؤة، الدوحة، دولة قطر</div>
+                        <div class="property-details">
+                            <div class="detail-item"><span>12</span><label>غرف نوم</label></div>
+                            <div class="detail-item"><span>15</span><label>حمامات</label></div>
+                            <div class="detail-item"><span>2500</span><label>م²</label></div>
+                        </div>
+                        <div class="property-price"><div class="price">85,000,000 <span>ريال قطري</span></div><button class="view-btn">تفاصيل</button></div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&q=80" alt="صورة 1">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&q=80" alt="صورة 2">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&q=80" alt="صورة 3">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=200&q=80" alt="صورة 4">
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800&q=80" alt="الكويت">
+                        <div class="property-number">4</div><div class="property-badge">VIP فاخر</div>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-name">فيلا الشاطئ الأزرق</h3>
+                        <span class="property-category">فيلا فاخرة</span>
+                        <div class="property-location">📍 شرق، مدينة الكويت، الكويت</div>
+                        <div class="property-details">
+                            <div class="detail-item"><span>6</span><label>غرف نوم</label></div>
+                            <div class="detail-item"><span>8</span><label>حمامات</label></div>
+                            <div class="detail-item"><span>950</span><label>م²</label></div>
+                        </div>
+                        <div class="property-price"><div class="price">3,500,000 <span>دينار كويتي</span></div><button class="view-btn">تفاصيل</button></div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=200&q=80" alt="صورة 1">
+                        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=200&q=80" alt="صورة 2">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=200&q=80" alt="صورة 3">
+                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=200&q=80" alt="صورة 4">
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80" alt="البحرين">
+                        <div class="property-number">5</div><div class="property-badge">VIP فاخر</div>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-name">برج الأمواج</h3>
+                        <span class="property-category">شقة سكنية</span>
+                        <div class="property-location">📍 الجفير، المنامة، مملكة البحرين</div>
+                        <div class="property-details">
+                            <div class="detail-item"><span>4</span><label>غرف نوم</label></div>
+                            <div class="detail-item"><span>5</span><label>حمامات</label></div>
+                            <div class="detail-item"><span>450</span><label>م²</label></div>
+                        </div>
+                        <div class="property-price"><div class="price">1,200,000 <span>دينار بحريني</span></div><button class="view-btn">تفاصيل</button></div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&q=80" alt="صورة 1">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&q=80" alt="صورة 2">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&q=80" alt="صورة 3">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=200&q=80" alt="صورة 4">
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80" alt="مصر">
+                        <div class="property-number">6</div><div class="property-badge">VIP فاخر</div>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-name">فيلا النيل الذهبية</h3>
+                        <span class="property-category">فيلا فاخرة</span>
+                        <div class="property-location">📍 التجمع الخامس، القاهرة، جمهورية مصر العربية</div>
+                        <div class="property-details">
+                            <div class="detail-item"><span>7</span><label>غرف نوم</label></div>
+                            <div class="detail-item"><span>9</span><label>حمامات</label></div>
+                            <div class="detail-item"><span>1100</span><label>م²</label></div>
+                        </div>
+                        <div class="property-price"><div class="price">85,000,000 <span>جنيه مصري</span></div><button class="view-btn">تفاصيل</button></div>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=200&q=80" alt="صورة 1">
+                        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=200&q=80" alt="صورة 2">
+                        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=200&q=80" alt="صورة 3">
+                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=200&q=80" alt="صورة 4">
+                    </div>
+                </div>
+            </div>
+    
